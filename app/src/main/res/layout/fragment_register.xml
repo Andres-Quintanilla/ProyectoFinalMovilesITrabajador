@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:id="@+id/registerFormContainer">
 
         <ImageView
             android:id="@+id/imageProfile"
@@ -29,16 +30,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selecciona tus ocupaciones:"
+            android:text="Escriba sus ocupaciones:"
             android:layout_marginTop="16dp" />
 
-        <LinearLayout
-            android:id="@+id/contenedorCategorias"
+        <EditText
+            android:id="@+id/editTextNuevasCategorias"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:paddingBottom="16dp" />
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Nuevas ocupaciones (separadas por coma)"
+            android:inputType="text" />
+
 
         <EditText
             android:id="@+id/editTextNombre"

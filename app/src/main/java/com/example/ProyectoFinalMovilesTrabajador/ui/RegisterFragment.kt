@@ -32,9 +32,6 @@ class RegisterFragment : Fragment() {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
         setupEventListeners()
-        viewModel.obtenerCategorias(requireContext()) { categorias ->
-            mostrarCategorias(categorias)
-        }
         return binding.root
     }
 
@@ -50,43 +47,27 @@ class RegisterFragment : Fragment() {
             val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
 
-            if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty() || imagenUri == null || categoriasSeleccionadas.isEmpty()) {
-                Toast.makeText(requireContext(), "Completa todos los campos y selecciona foto y ocupaciones", Toast.LENGTH_SHORT).show()
+            if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             viewModel.registrarTrabajador(
-                context = requireContext(),
                 nombre = nombre,
                 apellido = apellido,
                 email = email,
                 password = password,
-                imagenUri = imagenUri!!,
-                ocupaciones = categoriasSeleccionadas.toList(),
                 onSuccess = {
                     Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 },
-                onError = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+                onError = { mensaje ->
+                    Toast.makeText(requireContext(), mensaje, Toast.LENGTH_LONG).show()
                 }
             )
         }
     }
 
-    private fun mostrarCategorias(categorias: List<Categoria>) {
-        val container = binding.contenedorCategorias
-        categorias.forEach { categoria ->
-            val checkBox = CheckBox(requireContext()).apply {
-                text = categoria.name
-                setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) categoriasSeleccionadas.add(categoria.id)
-                    else categoriasSeleccionadas.remove(categoria.id)
-                }
-            }
-            container.addView(checkBox)
-        }
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
