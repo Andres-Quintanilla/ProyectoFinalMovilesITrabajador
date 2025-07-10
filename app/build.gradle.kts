@@ -46,7 +46,6 @@ android {
 dependencies {
 
     implementation(libs.glide)
-    //kapt(libs.compiler)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.gson)
