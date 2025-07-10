@@ -20,11 +20,7 @@
         android:id="@+id/loginFragment"
         android:name="com.example.ProyectoFinalMovilesTrabajador.ui.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_categoriaFragment"
-            app:destination="@id/categoriaFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.ProyectoFinalMovilesTrabajador.ui.RegisterFragment"
@@ -34,27 +30,4 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/categoriaFragment"
-        android:name="com.example.ProyectoFinalMovilesTrabajador.ui.CategoriaFragment"
-        android:label="fragment_categoria"
-        tools:layout="@layout/fragment_categoria" >
-        <action
-            android:id="@+id/action_categoriaFragment_to_trabajadorFragment"
-            app:destination="@id/trabajadorFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/trabajadorFragment"
-        android:name="com.example.ProyectoFinalMovilesTrabajador.ui.TrabajadorFragment"
-        android:label="fragment_trabajador"
-        tools:layout="@layout/fragment_trabajador" >
-        <action
-            android:id="@+id/action_trabajadorFragment_to_infoTrabajadorFragment"
-            app:destination="@id/infoTrabajadorFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/infoTrabajadorFragment"
-        android:name="com.example.ProyectoFinalMovilesTrabajador.ui.InfoTrabajadorFragment"
-        android:label="fragment_info_trabajador"
-        tools:layout="@layout/fragment_info_trabajador" />
 </navigation>
